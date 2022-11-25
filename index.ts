@@ -2,6 +2,7 @@ import { Context } from "https://deno.land/x/grammy@v1.12.0/context.ts";
 import { bot } from "./bot.instance.ts";
 import { BaseEvent } from "./events/abstract/BaseEvent.abstract.ts";
 import * as Events from './events/index.ts';
+import "./config/env.ts";
 
 // Initializing bot events
 Object.values(Events).forEach((EventClass: any) => {

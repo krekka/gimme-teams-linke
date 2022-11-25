@@ -1,3 +1,1 @@
-import { config as getConfig } from "https://deno.land/std/dotenv/mod.ts";
-
-export const env = await getConfig();
+import "https://deno.land/x/dotenv/load.ts";

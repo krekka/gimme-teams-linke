@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gtl-variables
+  namespace: krekka
+data:
+  BOT_TOKEN: "set in production"

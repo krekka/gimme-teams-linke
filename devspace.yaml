@@ -1,0 +1,40 @@
+version: v2beta1
+name: gimme-teams-linke
+
+pipelines:
+  deploy:
+    run: |-
+      run_dependencies --all
+      build_images --all
+      create_deployments --all --force-redeploy
+
+images:
+  app:
+    image: registry.odzi.dog/krekka/gimme-teams-linke
+    dockerfile: ./Dockerfile
+    buildKit:
+      inCluster: {}
+
+deployments:
+  app:
+    helm:
+      chart:
+        name: component-chart
+        repo: https://charts.devspace.sh
+      values:
+        containers:
+          - image: registry.odzi.dog/krekka/gimme-teams-linke
+            envFrom: 
+            - configMapRef:
+                name: gtl-variables
+
+  manifests:
+    kubectl:
+      manifests:
+        - ./manifests
+
+pullSecrets:
+  registry-odzi-dog:
+    registry: registry.odzi.dog
+    username: ""
+    password: ""
