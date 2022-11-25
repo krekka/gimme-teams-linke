@@ -5,3 +5,4 @@ metadata:
   namespace: krekka
 data:
   BOT_TOKEN: "set in production"
+immutable: true
